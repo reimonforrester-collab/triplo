@@ -20,3 +20,13 @@ document.querySelectorAll(".modes button").forEach((btn) => {
     console.log("Modo seleccionado:", mode);
   });
 });
+// Inicializar mapa con OpenStreetMap
+const map = L.map('map').setView([43.5453, -5.6615], 13); // Gijón por defecto
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Marcador de ejemplo en el centro
+L.marker([43.5453, -5.6615]).addTo(map).bindPopup("Centro inicial de Triplo");

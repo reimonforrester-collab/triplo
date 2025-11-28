@@ -5,7 +5,11 @@
   <title>Triplo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 </head>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <body>
   <header>
     <h1>Triplo</h1>
@@ -13,6 +17,8 @@
   </header>
 
   <main>
+    <div id="map"></div>
+
     <h2>Elige tu modo de ruta</h2>
     <div class="modes">
       <button data-mode="comoda">Cómoda / Segura</button>
