@@ -1,0 +1,58 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: #eee;
+}
+
+header, footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+}
+
+main {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  margin: 0.5rem 0;
+}
+
+.modes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.modes button {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.modes button[data-mode="comoda"] {
+  background: #2e7d32;
+}
+
+.modes button[data-mode="equilibrada"] {
+  background: #1976d2;
+}
+
+.modes button[data-mode="rapida"] {
+  background: #c62828;
+}
+
+#info {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: #1c1c1c;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
