@@ -4,38 +4,42 @@
   <meta charset="UTF-8" />
   <title>Triplo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet (OpenStreetMap) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
   <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
 </head>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <body>
-  <header>
-    <h1>Triplo</h1>
-    <p>Rutas sencillas para viajes en bicicleta con alforjas.</p>
-  </header>
+  <div class="app">
+    <!-- 1/3 superior: título -->
+    <header class="top">
+      <h1>TRIPLO</h1>
+      <p class="tagline">The easiest way of travel</p>
+    </header>
 
-  <main>
-    <div id="map"></div>
-
-    <h2>Elige tu modo de ruta</h2>
-    <div class="modes">
-      <button data-mode="comoda">Cómoda / Segura</button>
-      <button data-mode="equilibrada">Equilibrada</button>
-      <button data-mode="rapida">Rápida</button>
-    </div>
-
-    <section id="info">
-      <p>Selecciona un modo para empezar. Más adelante aquí aparecerán
-         los detalles de la ruta (km, desnivel, tipo de vías, etc.).</p>
+    <!-- 1/3 central: mapa -->
+    <section class="middle">
+      <div id="map"></div>
     </section>
-  </main>
 
-  <footer>
-    <small>Proyecto Triplo – prototipo inicial</small>
-  </footer>
+    <!-- 1/3 inferior: from / to / options -->
+    <section class="bottom">
+      <button id="from-btn" class="field">From</button>
+      <button id="to-btn" class="field">To</button>
+      <button id="options-btn" class="field secondary">Options</button>
+    </section>
 
+    <!-- Mensaje rápido de ayuda -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
+
