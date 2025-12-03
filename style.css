@@ -1,4 +1,3 @@
-/* PALETA estilo captura naranja */
 :root {
   --bg-main:      #ffb84a;
   --primary:      #3e3832;
@@ -6,63 +5,77 @@
   --field-bg:     #ffe6a8;
   --text-main:    #3e3832;
   --shadow-soft:  rgba(0, 0, 0, 0.08);
+  --green:        #2ecc71;
+  --yellow:       #f1c40f;
+  --red:          #e74c3c;
 }
 
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  margin: 0;
   background: var(--bg-main);
   font-family: "Poppins", system-ui, sans-serif;
   height: 100vh;
+  overflow: hidden;
 }
 
-/* CONTENEDOR PRINCIPAL con 3 secciones iguales */
-.container {
+.state {
+  display: none;
+  opacity: 0;
+  height: 100vh;
+}
+
+.state.active {
+  display: block;
+  opacity: 1;
+}
+
+.container-search {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Cada sección ocupa 1/3 del alto */
-.section {
-  flex: 1; /* Cada sección igual de alta */
+.section-search {
+  flex: 1;
+  min-height: 33.33vh;
+  max-height: 33.33vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 0; /* Permite que el contenido se ajuste */
+  position: relative;
+  overflow: hidden;
 }
 
-/* AJUSTES ESPECÍFICOS PARA CADA SECCIÓN */
-
-/* LOGO - centrado en su tercio */
-.top {
-  padding-top: 20px;
-  align-items: flex-start; /* Logo cerca del borde superior */
+.section-top {
+  background: var(--bg-main);
+  z-index: 1000;
 }
 
-/* LOGO como bloque */
 .logo-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: scale(0.85);
+  width: 90%;
+  padding: 1vh 0;
 }
 
-/* Triángulo */
 .triangle {
   width: 0;
   height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 50px solid var(--primary);
+  border-left: 5vw solid transparent;
+  border-right: 5vw solid transparent;
+  border-bottom: 8vw solid var(--primary);
   filter: drop-shadow(0 1px 1px var(--shadow-soft));
-  margin-bottom: 10px;
+  margin-bottom: 1vh;
 }
 
-/* TRIPLO */
 .brand {
-  font-size: 64px;
+  font-size: 10vw;
   font-weight: 600;
   letter-spacing: 0.16em;
   color: var(--primary);
@@ -71,19 +84,19 @@ body {
   line-height: 1;
 }
 
-/* SLOGAN */
 .slogan {
   font-family: "Dancing Script", cursive;
-  font-size: 48px;
+  font-size: 5vw;
   color: var(--primary);
   text-shadow: 0 1px 1px var(--shadow-soft);
-  margin-top: 8px;
+  margin-top: 0.5vh;
   line-height: 1;
 }
 
-/* MAPA - ocupa todo su tercio */
-.middle {
-  padding: 0;
+.section-middle {
+  background: var(--bg-main);
+  z-index: 1;
+  padding: 1vh 0;
 }
 
 .map-outer {
@@ -94,34 +107,29 @@ body {
   box-shadow: 0 3px 6px var(--shadow-soft);
 }
 
-.map-inner {
-  width: 100%;
-  height: 100%;
-}
-
-/* FILTRO SEPIA FUERTE - TONOS MARRONES */
-.map-inner .leaflet-layer,
-.map-inner .leaflet-tile {
-  filter: none;
-}
-
-/* CAMPOS INFERIORES */
-.bottom {
-  align-items: flex-start; /* Campos cerca del borde inferior */
-  padding-bottom: 30px;
+.section-bottom {
+  background: var(--bg-main);
+  z-index: 1000;
+  padding-bottom: 2vh;
 }
 
 .bottom-inner {
   width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.5vh;
+}
+
+.field-container {
+  position: relative;
+  width: 100%;
 }
 
 .field {
   width: 100%;
   height: 50px;
   padding: 0 16px;
+  padding-right: 50px;
   border: none;
   border-radius: 12px;
   background: var(--field-bg);
@@ -133,9 +141,29 @@ body {
   color: rgba(62, 56, 50, 0.7);
 }
 
+.geolocate-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--primary);
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.geolocate-btn:hover {
+  opacity: 1;
+  background: rgba(62, 56, 50, 0.1);
+}
+
 .bottom-row {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .btn {
@@ -161,4 +189,250 @@ body {
 .btn.secondary {
   background: var(--accent-soft);
   color: var(--primary);
+}
+
+.container-results {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-top-compact {
+  flex: 0.12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-main);
+  z-index: 1000;
+  padding: 5px 0;
+}
+
+.logo-compact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.triangle-small {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid var(--primary);
+  margin-right: 15px;
+}
+
+.brand-small {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--primary);
+  margin: 0;
+}
+
+.section-middle-expanded {
+  flex: 0.68;
+  padding: 10px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.map-outer-expanded {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.section-bottom-options {
+  flex: 0.20;
+  padding: 10px 0 15px;
+  background: var(--bg-main);
+  z-index: 1000;
+}
+
+.compact-options {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.compact-route {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.compact-route:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.compact-route.active {
+  border: 2px solid var(--primary);
+  background: #fff8ec;
+}
+
+.route-line-indicator {
+  width: 5px;
+  height: 35px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.route-green { background: var(--green); }
+.route-yellow { background: var(--yellow); }
+.route-red { background: var(--red); }
+
+.compact-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.compact-title {
+  font-size: 16px;
+  color: var(--primary);
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.compact-details {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: rgba(62, 56, 50, 0.8);
+}
+
+.compact-distance,
+.compact-elevation,
+.compact-roads,
+.compact-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.compact-score {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.score-green { background: var(--green); }
+.score-yellow { background: var(--yellow); }
+.score-red { background: var(--red); }
+
+.options-actions {
+  display: flex;
+  gap: 12px;
+  width: 95%;
+  margin: 15px auto 0;
+}
+
+.map-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-popup-content {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.leaflet-popup-content b {
+  color: #ff6b00;
+}
+
+.route-line-fastest {
+  stroke-dasharray: 10, 5;
+}
+
+.route-line-balanced {
+  stroke-dasharray: 20, 10;
+}
+
+.route-line-scenic {
+  stroke-dasharray: 5, 15;
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .container-search {
+    max-width: 400px;
+    margin: 0 auto;
+    height: 95vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-main);
+    padding: 10px;
+  }
+  
+  .section-search {
+    min-height: 33vh;
+  }
+  
+  .container-results {
+    max-width: 450px;
+    margin: 0 auto;
+    height: 95vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .section-middle-expanded {
+    flex: 0.65;
+  }
+  
+  .section-bottom-options {
+    flex: 0.23;
+  }
+}
+
+@media (max-height: 700px) {
+  .section-search {
+    min-height: 32vh;
+  }
+  
+  .section-middle-expanded {
+    flex: 0.65;
+  }
+  
+  .compact-options {
+    gap: 6px;
+  }
+  
+  .compact-route {
+    padding: 10px 12px;
+  }
 }
