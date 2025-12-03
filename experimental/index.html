@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+  <title>TRIPLO | Experimental</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    
+    <div class="state state-search active">
+      <div class="container-search">
+        <section class="section-search section-top">
+          <div class="logo-block">
+            <div class="triangle"></div>
+            <h1 class="brand">TRIPLO</h1>
+            <p class="slogan">Find your best path.</p>
+          </div>
+        </section>
+        
+        <section class="section-search section-middle">
+          <div class="map-outer">
+            <div id="map" class="map-inner"></div>
+          </div>
+        </section>
+        
+        <section class="section-search section-bottom">
+          <div class="bottom-inner">
+            <div class="field-container">
+              <input class="field" type="text" placeholder="From" id="fromInput" />
+              <button class="geolocate-btn" type="button" title="Usar mi ubicación">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="4"/>
+                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                </svg>
+              </button>
+            </div>
+            <input class="field" type="text" placeholder="To" id="toInput" />
+            <div class="bottom-row">
+              <button class="btn primary" id="searchBtn">Search</button>
+              <button class="btn secondary">Options</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <div class="state state-results">
+      <div class="container-results">
+        <section class="section-results section-top-compact">
+          <div class="logo-compact">
+            <div class="triangle-small"></div>
+            <h1 class="brand-small">TRIPLO</h1>
+          </div>
+        </section>
+        
+        <section class="section-results section-middle-expanded">
+          <div class="map-outer-expanded">
+            <div id="mapResults" class="map-inner"></div>
+          </div>
+        </section>
+        
+        <section class="section-results section-bottom-options">
+          <div class="compact-options">
+            <div class="compact-route active" data-route="fastest">
+              <div class="route-line-indicator route-green"></div>
+              <div class="compact-content">
+                <h3 class="compact-title">Fastest</h3>
+                <div class="compact-details">
+                  <span class="compact-distance">12.3 km</span>
+                  <span class="compact-elevation">↑156m</span>
+                  <span class="compact-roads">🛣️ 80%</span>
+                  <span class="compact-time">⏱️ 25 min</span>
+                </div>
+              </div>
+              <div class="compact-score score-green">8.5</div>
+            </div>
+            
+            <div class="compact-route" data-route="balanced">
+              <div class="route-line-indicator route-yellow"></div>
+              <div class="compact-content">
+                <h3 class="compact-title">Balanced</h3>
+                <div class="compact-details">
+                  <span class="compact-distance">14.1 km</span>
+                  <span class="compact-elevation">↑89m</span>
+                  <span class="compact-roads">🛣️ 60%</span>
+                  <span class="compact-time">⏱️ 32 min</span>
+                </div>
+              </div>
+              <div class="compact-score score-yellow">7.2</div>
+            </div>
+            
+            <div class="compact-route" data-route="scenic">
+              <div class="route-line-indicator route-red"></div>
+              <div class="compact-content">
+                <h3 class="compact-title">Scenic</h3>
+                <div class="compact-details">
+                  <span class="compact-distance">18.7 km</span>
+                  <span class="compact-elevation">↑45m</span>
+                  <span class="compact-roads">🛣️ 40%</span>
+                  <span class="compact-time">⏱️ 45 min</span>
+                </div>
+              </div>
+              <div class="compact-score score-red">5.8</div>
+            </div>
+          </div>
+          
+          <div class="options-actions">
+            <button class="btn secondary" id="backBtn">← Back</button>
+            <button class="btn primary" id="selectRouteBtn">Select Route</button>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
